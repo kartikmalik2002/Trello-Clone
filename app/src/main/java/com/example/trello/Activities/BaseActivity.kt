@@ -15,7 +15,7 @@ import com.example.trello.databinding.DialogProgressBinding
 
 open class BaseActivity : AppCompatActivity() {
 
-    private var doubleBackToExitPressedOnce = false
+    private var doubleBackToExitPressedOnce = true
 
     private lateinit var tv_progress_text : TextView
 
@@ -63,19 +63,19 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun doubleBackToExit() {
-        if (doubleBackToExitPressedOnce) {
+        if (!doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
         }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(
-            this,
-            resources.getString(R.string.please_click_back_again_to_exit),
-            Toast.LENGTH_SHORT
-        ).show()
-
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        else {
+            Toast.makeText(
+                this,
+                resources.getString(R.string.please_click_back_again_to_exit),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        this.doubleBackToExitPressedOnce = false
+        Handler().postDelayed({ doubleBackToExitPressedOnce = true }, 2000)
     }
 
     fun showErrorSnackBar(message: String) {

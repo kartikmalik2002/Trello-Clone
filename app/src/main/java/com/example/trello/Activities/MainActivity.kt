@@ -85,7 +85,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
         }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+
         super.onBackPressed()
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -93,6 +95,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             // A double back press function is added in Base Activity.
             doubleBackToExit()
         }
+
+
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
@@ -108,7 +112,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_sign_out -> {
                 // Here sign outs the user from firebase in this device.
                 FirebaseAuth.getInstance().signOut()
-
                 // Send the user to the intro screen of the application.
                 val intent = Intent(this, IntroActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -235,7 +238,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val adapter = BoardItemsAdapter(this@MainActivity, boardsList)
             binding.appBarMain.contentMain.rvBoardsList.adapter = adapter // Attach the adapter to the recyclerView.
 
-            // TODO (Step 9: Add click event for boards item and launch the TaskListActivity)
+            //  Add click event for boards item and launch the TaskListActivity
             // START
             adapter.setOnClickListener(object :
                 BoardItemsAdapter.OnClickListener {
@@ -272,8 +275,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         FirestoreClass().loadUserData(this@MainActivity, true)
     }
 
-
-
     /**
      * A companion object to declare the constants.
      */
@@ -281,7 +282,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //A unique code for starting the activity for result
         const val MY_PROFILE_REQUEST_CODE: Int = 11
 
-        // TODO (Step 1: Add a unique code for starting the create board activity for result)
+        // a unique code for starting the create board activity for result
         const val CREATE_BOARD_REQUEST_CODE: Int = 12
     }
 }
