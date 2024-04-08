@@ -88,6 +88,8 @@ class MembersActivity : BaseActivity() {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.title = "Members"
+
         }
 
         binding.toolbarMembersActivity.setNavigationOnClickListener { onBackPressed() }
@@ -147,11 +149,7 @@ class MembersActivity : BaseActivity() {
                 FirestoreClass().getMemberDetails(this@MembersActivity, email)
             } else {
                 showErrorSnackBar("Please enter members email address.")
-                /*Toast.makeText(
-                    this@MembersActivity,
-                    "Please enter members email address.",
-                    Toast.LENGTH_SHORT
-                ).show()*/
+
             }
         })
         dialog.findViewById<TextView>(R.id.tv_cancel).setOnClickListener(View.OnClickListener {
@@ -177,20 +175,18 @@ class MembersActivity : BaseActivity() {
 
         mAssignedMembersList.add(user)
 
-        // TODO (Step 4: Here the list is updated so change the global variable which we have declared for notifying changes.)
-        // START
+        // Here the list is updated so changed the global variable which we have declared for notifying changes.
         anyChangesDone = true
-        // END
 
         setupMembersList(mAssignedMembersList)
 
-        // TODO (Step 5: Call the AsyncTask class when the board is assigned to the user and based on the users detail send them the notification using the FCM token.)
-        // START
+        // Call the AsyncTask class when the board is assigned to the user and based on the users detail send them the notification using the FCM token.
+
         SendNotificationToUserAsyncTask(mBoardDetails.name, user.fcmToken).execute()
-        // END
+
     }
 
-    // TODO (Step 2: Create a AsyncTask class for sending the notification to user based on the FCM Token.)
+    // Create a AsyncTask class for sending the notification to user based on the FCM Token.
     // START
     /**
      * “A nested class marked as inner can access the members of its outer class.

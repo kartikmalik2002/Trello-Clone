@@ -20,12 +20,10 @@ class SplashActivity : AppCompatActivity() {
         )
 
         Handler().postDelayed({
-            val user = FirebaseAuth.getInstance().currentUser
-            if (user != null) {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            } else {
+
+
                 startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
-            }
+
             finish()
         },2500)
     }

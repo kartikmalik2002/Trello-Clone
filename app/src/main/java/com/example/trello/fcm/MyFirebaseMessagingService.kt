@@ -95,7 +95,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun sendRegistrationToServer(token: String?) {
         // Here we have saved the token in the Shared Preferences
         val sharedPreferences =
-            this.getSharedPreferences(Constants.PROGEMANAG_PREFERENCES, Context.MODE_PRIVATE)
+            this.getSharedPreferences(Constants.TRELLO_PREFERENCES, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(Constants.FCM_TOKEN, token)
         editor.apply()
@@ -148,8 +148,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
-                "Channel Projemanag title",
-                NotificationManager.IMPORTANCE_DEFAULT
+                "Channel Trello title",
+                NotificationManager.IMPORTANCE_HIGH
             )
             notificationManager.createNotificationChannel(channel)
         }

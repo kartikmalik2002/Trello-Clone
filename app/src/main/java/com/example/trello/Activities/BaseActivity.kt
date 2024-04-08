@@ -74,8 +74,8 @@ open class BaseActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-        this.doubleBackToExitPressedOnce = false
-        Handler().postDelayed({ doubleBackToExitPressedOnce = true }, 2000)
+        //this.doubleBackToExitPressedOnce = false
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
     fun showErrorSnackBar(message: String) {

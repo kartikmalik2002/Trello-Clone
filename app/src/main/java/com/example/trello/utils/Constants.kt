@@ -45,7 +45,7 @@ object Constants {
     // A unique code of image selection from Phone Storage.
     const val PICK_IMAGE_REQUEST_CODE = 2
 
-    const val PROGEMANAG_PREFERENCES: String = "ProjemanagPrefs"
+    const val TRELLO_PREFERENCES: String = "TrelloPrefs"
     const val FCM_TOKEN:String = "fcmToken"
     const val FCM_TOKEN_UPDATED:String = "fcmTokenUpdated"
 
